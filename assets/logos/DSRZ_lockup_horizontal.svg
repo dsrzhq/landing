@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="167 136 1500 678" role="img" aria-label="DSRZ — Lockup Horizontal">
+  <title>DSRZ — Lockup Horizontal</title>
+
+  <defs>
+    
+    <mask id="m-lkh">
+      <rect x="127.0" y="66.0" width="817.0" height="817.0" fill="white"></rect>
+      <path d="M525 451C559 482 580 543 586 582C530 586 474 571 427 555C449 514 487 473 525 451Z" fill="black"></path>
+    </mask>
+  </defs>
+  <g mask="url(#m-lkh)">
+    <path d="M426 202C359 327 295 457 241 589C209 663 202 713 237 754C276 679 323 621 381 566L526 388C497 319 460 252 426 202Z" fill="#111111"></path>
+    <path d="M452 196C602 209 728 405 830 641L646 622C611 486 560 336 452 196Z" fill="#111111"></path>
+    <path d="M376 581C509 633 655 664 834 645C807 713 718 746 611 749L248 754C290 686 329 631 376 581Z" fill="#111111"></path>
+  </g>
+  <line x1="876" y1="220" x2="876" y2="730" stroke="#111111" stroke-width="1.5" opacity="0.15"></line>
+  <text x="924" y="555" font-family="&#39;Space Grotesk&#39;, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-weight="700" font-size="211" letter-spacing="24" fill="#111111">DSRZ</text>
+</svg>

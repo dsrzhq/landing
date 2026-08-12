@@ -1,0 +1,295 @@
+/* ============================================================
+   DSRZ — Foundations: Color + Type tokens
+   "Organized Momentum" · 80% monochrome / 20% strategic color
+   Source: DSRZ Visual Design Specification v2.0 (APROBADO 01.06.2026)
+   ============================================================ */
+
+/* All three brand families self-hosted from the canonical project font library — no CDN dependency */
+
+/* ---- Space Grotesk (self-hosted static weights) ---- */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Space_Grotesk/static/SpaceGrotesk-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Space_Grotesk/static/SpaceGrotesk-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Space_Grotesk/static/SpaceGrotesk-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Space_Grotesk/static/SpaceGrotesk-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Space_Grotesk/static/SpaceGrotesk-Bold.ttf') format('truetype');
+}
+
+/* ---- Inter (static fonts — official 18pt set from canonical library) ---- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Inter/static/Inter_18pt-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Inter/static/Inter_18pt-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Inter/static/Inter_18pt-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
+}
+
+/* ---- Source Serif 4 (static fonts — canonical editorial family) ---- */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Source_Serif_4/static/SourceSerif4-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Source_Serif_4/static/SourceSerif4-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Source_Serif_4/static/SourceSerif4-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Source_Serif_4/static/SourceSerif4-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/FUENTES_OFICIALES/Source_Serif_4/static/SourceSerif4-Italic.ttf') format('truetype');
+}
+
+:root {
+  /* ---- Core palette ---- */
+  --obsidian:        #111111; /* Color principal — Obsidian Black */
+  --white:           #FFFFFF; /* Color secundario — Pure White   */
+  --momentum-blue:   #2563EB; /* Color institucional — accent     */
+  --impact-cyan:     #06B6D4; /* Secondary accent — energy/data   */
+  --signal-amber:    #F59E0B; /* Tertiary accent — alerts/highlight*/
+  --deep-navy:       #0F172A; /* Dark surface alt                 */
+
+  /* ---- Slate neutral scale ---- */
+  --slate-900: #1F2937;
+  --slate-700: #374151;
+  --slate-500: #6B7280;
+  --slate-300: #D1D5DB;
+  --slate-100: #F3F4F6;
+
+  /* ---- Semantic foreground ---- */
+  --fg-1: var(--obsidian);   /* primary text            */
+  --fg-2: var(--slate-700);  /* secondary text          */
+  --fg-3: var(--slate-500);  /* muted / captions        */
+  --fg-on-dark:   var(--white);
+  --fg-on-dark-2: var(--slate-300);
+
+  /* ---- Semantic surfaces ---- */
+  --bg-1: var(--white);      /* base canvas             */
+  --bg-2: var(--slate-100);  /* subtle raised panel     */
+  --bg-dark:  var(--obsidian);
+  --bg-navy:  var(--deep-navy);
+
+  /* ---- Borders / lines ---- */
+  --line-1: var(--slate-300);          /* default hairline        */
+  --line-2: var(--slate-100);          /* faint divider           */
+  --line-strong: var(--obsidian);      /* emphatic rule           */
+  --line-on-dark: rgba(255,255,255,0.15);
+
+  /* ---- Accent semantics ---- */
+  --accent:        var(--momentum-blue);
+  --accent-hover:  #1D4ED8;            /* darken for hover         */
+  --accent-press:  #1E40AF;
+  --focus-ring:    var(--momentum-blue);
+
+  /* ---- Type families ---- */
+  --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; /* titulares / marca */
+  --font-ui:      'Inter', 'Helvetica Neue', Arial, sans-serif;          /* UI / body         */
+  --font-serif:   'Source Serif 4', Georgia, 'Times New Roman', serif;   /* editorial         */
+
+  /* ---- Type scale (modular, 8px-aligned) ---- */
+  --text-display: 72px;
+  --text-h1: 56px;
+  --text-h2: 40px;
+  --text-h3: 32px;
+  --text-h4: 24px;
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-sm: 14px;
+  --text-xs: 12px;
+  --text-eyebrow: 13px;
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1.05;
+  --lh-snug: 1.2;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+
+  /* ---- Tracking ---- */
+  --track-wordmark: 0.06em;  /* uppercase Space Grotesk brand    */
+  --track-eyebrow: 0.18em;   /* uppercase labels / eyebrows      */
+  --track-tight: -0.02em;    /* large display headings           */
+
+  /* ---- Spacing — base module 8px ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 80px;   /* desktop lateral margin */
+  --space-9: 120px;
+
+  /* ---- Radius — max 4px (no soft/pill shapes) ---- */
+  --radius-0: 0px;
+  --radius-1: 2px;
+  --radius-2: 4px;   /* maximum permitted */
+
+  /* ---- Layout ---- */
+  --margin-desktop: 80px;
+  --grid-columns: 12;
+  --grid-gutter: 24px;
+  --content-max: 1280px;
+
+  /* ---- Motion — restrained, no bounce ---- */
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 360ms;
+
+  /* ---- Borders width ---- */
+  --border: 1px;
+  --border-strong: 1.5px;
+}
+
+/* ============================================================
+   Base element styles (semantic)
+   ============================================================ */
+
+.dsrz {
+  font-family: var(--font-ui);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  font-size: var(--text-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+.dsrz h1, .dsrz h2, .dsrz h3, .dsrz h4 {
+  font-family: var(--font-display);
+  color: var(--fg-1);
+  font-weight: 700;
+  margin: 0;
+}
+.dsrz h1 { font-size: var(--text-h1); line-height: var(--lh-tight); letter-spacing: var(--track-tight); }
+.dsrz h2 { font-size: var(--text-h2); line-height: var(--lh-snug); letter-spacing: var(--track-tight); }
+.dsrz h3 { font-size: var(--text-h3); line-height: var(--lh-snug); }
+.dsrz h4 { font-size: var(--text-h4); line-height: var(--lh-snug); }
+
+.dsrz .display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-tight);
+}
+
+/* Brand wordmark treatment */
+.dsrz .wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--track-wordmark);
+}
+
+/* Eyebrow / kicker label */
+.dsrz .eyebrow {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: var(--text-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--fg-3);
+}
+
+.dsrz p { margin: 0; font-size: var(--text-body); line-height: var(--lh-relaxed); color: var(--fg-2); }
+
+/* Editorial serif lead / pull quotes */
+.dsrz .editorial {
+  font-family: var(--font-serif);
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-1);
+}
+.dsrz .lead {
+  font-family: var(--font-serif);
+  font-size: var(--text-h4);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+
+.dsrz small, .dsrz .caption {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+}
+
+.dsrz a { color: var(--accent); text-decoration: none; }
+.dsrz a:hover { color: var(--accent-hover); }

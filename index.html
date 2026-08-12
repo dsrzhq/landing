@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSRZ HQ — Donde las ideas se convierten en impacto</title>
+  <meta name="description" content="Plataforma premium para emprendedores, inversionistas y líderes.">
+  <link rel="stylesheet" href="./colors_and_type.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--white); }
+
+    /* Sticky nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard);
+    }
+    header.solid {
+      background: var(--obsidian);
+      border-bottom-color: rgba(255,255,255,0.10);
+    }
+
+    .nav-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+    nav a {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color var(--dur) var(--ease-standard);
+    }
+    nav a:hover {
+      color: #fff;
+    }
+
+    /* Sections */
+    section {
+      position: relative;
+    }
+
+    .content-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 80px;
+      box-sizing: border-box;
+    }
+
+    /* Hero */
+    #hero {
+      background: #0F172A;
+      color: #fff;
+      overflow: hidden;
+      margin-top: -80px;
+      padding-top: 80px;
+    }
+
+    .hero-lines {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 420px;
+      height: 320px;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(54deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 26px);
+    }
+
+    .hero-inner {
+      max-width: 880px;
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+
+    .hero-inner h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin: 26px 0 0;
+      color: #fff;
+    }
+
+    .hero-inner h1 .blue {
+      color: #2563EB;
+    }
+
+    .hero-inner p {
+      font-family: var(--font-ui);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--slate-300);
+      max-width: 620px;
+      margin: 28px 0 0;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    /* Signal */
+    #signal {
+      background: var(--white);
+    }
+
+    .signal-inner {
+      padding-top: 128px;
+      padding-bottom: 128px;
+    }
+
+    .signal-inner blockquote {
+      margin: 32px 0 0;
+    }
+
+    .signal-inner blockquote p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 46px;
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+      color: var(--fg-1);
+      margin: 0;
+    }
+
+    /* Ecosystem */
+    #ecosystem {
+      background: #0F172A;
+      color: #fff;
+    }
+
+    .ecosystem-inner {
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+
+    .ecosystem-inner h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1.2;
+      margin-top: 24px;
+      color: #fff;
+    }
+
+    .ecosystem-inner p {
+      font-family: var(--font-ui);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--slate-300);
+      margin-top: 16px;
+      max-width: 720px;
+    }
+
+    .constellation-svg {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      margin-top: 64px;
+    }
+
+    /* Vectors */
+    #vectors {
+      background: var(--white);
+    }
+
+    .vectors-inner {
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+
+    .vectors-inner h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1.2;
+      margin-top: 24px;
+      max-width: 760px;
+    }
+
+    .vectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 64px;
+    }
+
+    .vector-card {
+      background: var(--white);
+      border: 1px solid var(--line-1);
+      border-radius: 2px;
+      padding: 40px 32px;
+      transition: border-color var(--dur) var(--ease-standard);
+      text-align: center;
+    }
+
+    .vector-card:hover {
+      border-color: #2563EB;
+    }
+
+    .vector-icon {
+      width: 24px;
+      height: 24px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vector-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--fg-1);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .vector-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: var(--fg-1);
+    }
+
+    .vector-card p {
+      font-family: var(--font-ui);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--fg-2);
+      margin: 0 0 24px;
+    }
+
+    .vector-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 15px;
+      color: #2563EB;
+      text-decoration: none;
+      transition: color var(--dur) var(--ease-standard);
+    }
+
+    .vector-card a:hover {
+      color: #1D4ED8;
+    }
+
+    .vector-card a svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Evidence */
+    #evidence {
+      background: var(--slate-100);
+    }
+
+    .evidence-inner {
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 64px;
+    }
+
+    .evidence-item {
+      text-align: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line-1);
+    }
+
+    .evidence-item:last-child {
+      border-bottom: none;
+    }
+
+    .evidence-stat {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1.2;
+      color: var(--fg-1);
+      margin: 0;
+    }
+
+    .evidence-label {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--fg-3);
+      margin-top: 8px;
+    }
+
+    /* Founder Frame */
+    #founder {
+      background: var(--obsidian);
+      color: #fff;
+    }
+
+    .founder-inner {
+      padding-top: 96px;
+      padding-bottom: 96px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .founder-image {
+      aspect-ratio: 4/5;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line-on-dark);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate-500);
+      font-family: var(--font-ui);
+      font-size: 14px;
+    }
+
+    .founder-text blockquote {
+      margin: 0;
+    }
+
+    .founder-text blockquote p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.5;
+      color: #fff;
+      margin: 0 0 32px;
+    }
+
+    .founder-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+
+    .founder-role {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--slate-500);
+    }
+
+    /* Access */
+    #access {
+      background: var(--white);
+    }
+
+    .access-inner {
+      padding-top: 96px;
+      padding-bottom: 96px;
+      max-width: 520px;
+    }
+
+    .access-form {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-label {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--fg-3);
+    }
+
+    .form-input, .form-select {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      color: var(--fg-1);
+      padding: 12px 14px;
+      border: 1.5px solid var(--line-1);
+      border-radius: 2px;
+      background: var(--white);
+      outline: none;
+      transition: border-color var(--dur) var(--ease-standard);
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: #2563EB;
+    }
+
+    .form-submit {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 24px;
+      border-radius: 2px;
+      border: 1.5px solid transparent;
+      background: #2563EB;
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      letter-spacing: 0.01em;
+      transition: background var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard);
+      margin-top: 24px;
+    }
+
+    .form-submit:hover {
+      background: #1D4ED8;
+    }
+
+    .form-submit:active {
+      background: #1E40AF;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 48px;
+      padding: 24px;
+      background: var(--slate-100);
+      border: 1px solid var(--line-1);
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--obsidian);
+      color: #fff;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .footer-inner {
+      padding-top: 48px;
+      padding-bottom: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .footer-links a {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      transition: color var(--dur) var(--ease-standard);
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--fg-3);
+    }
+
+    .eyebrow-dark {
+      color: var(--slate-500);
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: #2563EB;
+    }
+
+    /* Button */
+    .btn {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 24px;
+      border-radius: 2px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      letter-spacing: 0.01em;
+      transition: background var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard), color var(--dur) var(--ease-standard);
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: #2563EB;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1D4ED8;
+    }
+
+    .btn-primary:active {
+      background: #1E40AF;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--fg-1);
+      border-color: var(--line-1);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--obsidian);
+    }
+
+    .btn-ghost-dark {
+      background: transparent;
+      color: #fff;
+      border-color: var(--line-on-dark);
+    }
+
+    .btn-ghost-dark:hover {
+      border-color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .nav-wrap, .content-wrap {
+        padding: 0 48px;
+      }
+      .founder-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 32px;
+        text-align: center;
+      }
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-wrap, .content-wrap {
+        padding: 0 24px;
+      }
+      nav {
+        gap: 20px;
+      }
+      nav a {
+        font-size: 13px;
+      }
+      .hero-inner {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+      .hero-inner h1 {
+        font-size: 40px;
+      }
+      .hero-inner p {
+        font-size: 16px;
+      }
+      .hero-ctas {
+        flex-direction: column;
+      }
+      .signal-inner blockquote p {
+        font-size: 32px;
+      }
+      .ecosystem-inner h2, .vectors-inner h2 {
+        font-size: 32px;
+      }
+      .vectors-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-wrap {
+        height: auto;
+        flex-direction: column;
+        padding: 16px 24px;
+        gap: 16px;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .nav-logo {
+        width: 100%;
+      }
+      #hero {
+        margin-top: -auto;
+      }
+      .hero-inner {
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+      .hero-inner h1 {
+        font-size: 28px;
+      }
+      .hero-lines {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body class="dsrz">
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-wrap">
+    <a href="#top" class="nav-logo">
+      <img src="./assets/logos/DSRZ_lockup_horizontal_inverted.svg" alt="DSRZ">
+    </a>
+    <nav>
+      <a href="#ecosystem">Ecosistema</a>
+      <a href="#vectors">Vectores</a>
+      <a href="#evidence">Evidencia</a>
+      <a href="#founder">Fundador</a>
+      <button class="btn btn-primary" onclick="openAccess()">Entrar</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-lines" aria-hidden="true"></div>
+  <div class="content-wrap">
+    <div class="hero-inner">
+      <span class="eyebrow">Organized Momentum</span>
+      <h1>Donde las ideas se convierten en <span class="blue">impacto</span>.</h1>
+      <p>DSRZ HQ es el punto de entrada al ecosistema DSRZ.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" onclick="openAccess()">Entrar al ecosistema</button>
+        <button class="btn btn-ghost-dark">Conocer la visión</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNAL -->
+<section id="signal">
+  <div class="content-wrap">
+    <div class="signal-inner">
+      <span class="eyebrow">Señal</span>
+      <blockquote>
+        <p>La plataforma donde las ideas se convierten en impacto.</p>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section id="ecosystem">
+  <div class="content-wrap">
+    <div class="ecosystem-inner">
+      <span class="eyebrow eyebrow-dark">El Ecosistema</span>
+      <h2>Una constelación organizada alrededor de DSRZ HQ.</h2>
+      <p>El ecosistema se organiza alrededor de cinco satélites documentados. La activación pública queda condicionada al cierre de evidencia mínima y validación del set final.</p>
+
+      <svg class="constellation-svg" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Central node -->
+        <g>
+          <rect x="200" y="110" width="160" height="160" rx="2" fill="none" stroke="#2563EB" stroke-width="1.5"/>
+          <image x="240" y="150" width="80" height="80" href="./assets/logos/DSRZ_isotype_white.svg" />
+        </g>
+
+        <!-- Satellites -->
+        <g opacity="0.6">
+          <!-- Top -->
+          <line x1="280" y1="110" x2="280" y2="20" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
+          <circle cx="280" cy="20" r="3.5" fill="#2563EB"/>
+          <rect x="240" y="0" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+
+          <!-- Right-top -->
+          <line x1="360" y1="110" x2="420" y2="50" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
+          <circle cx="420" cy="50" r="3.5" fill="#2563EB"/>
+          <rect x="390" y="30" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+
+          <!-- Right-bottom -->
+          <line x1="360" y1="190" x2="420" y2="280" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
+          <circle cx="420" cy="280" r="3.5" fill="#2563EB"/>
+          <rect x="390" y="300" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+
+          <!-- Left-bottom -->
+          <line x1="200" y1="190" x2="80" y2="280" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
+          <circle cx="80" cy="280" r="3.5" fill="#2563EB"/>
+          <rect x="40" y="300" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+
+          <!-- Left-top -->
+          <line x1="200" y1="110" x2="80" y2="50" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
+          <circle cx="80" cy="50" r="3.5" fill="#2563EB"/>
+          <rect x="40" y="30" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- VECTORS -->
+<section id="vectors">
+  <div class="content-wrap">
+    <div class="vectors-inner">
+      <span class="eyebrow">Vectores de acción</span>
+      <h2>Tres ángulos de activación.</h2>
+
+      <div class="vectors-grid">
+        <!-- Editorial -->
+        <div class="vector-card">
+          <div class="vector-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 19l-7-3v-5l7-3 7 3v5l-7 3zm0-5L7 11v3l5 2 5-2v-3l-5 3z"/>
+            </svg>
+          </div>
+          <h3>Editorial</h3>
+          <p>Voz autoral y análisis de tendencias en tecnología y negocio.</p>
+          <a href="#" onclick="return false">Ver más →</a>
+        </div>
+
+        <!-- Capital -->
+        <div class="vector-card">
+          <div class="vector-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2l9 5v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V7l9-5z"/>
+            </svg>
+          </div>
+          <h3>Capital</h3>
+          <p>Acceso a rondas de inversión y alianzas estratégicas.</p>
+          <a href="#" onclick="return false">Ver más →</a>
+        </div>
+
+        <!-- Comunidad -->
+        <div class="vector-card">
+          <div class="vector-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
+          </div>
+          <h3>Comunidad</h3>
+          <p>Red de emprendedores, inversores y líderes alineados.</p>
+          <a href="#" onclick="return false">Ver más →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVIDENCE -->
+<section id="evidence">
+  <div class="content-wrap">
+    <div class="evidence-inner">
+      <span class="eyebrow">Evidencia</span>
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <p class="evidence-stat">24</p>
+          <p class="evidence-label">Miembros fundadores</p>
+        </div>
+        <div class="evidence-item">
+          <p class="evidence-stat">$3.2M</p>
+          <p class="evidence-label">Capital movilizado</p>
+        </div>
+        <div class="evidence-item">
+          <p class="evidence-stat">8</p>
+          <p class="evidence-label">Proyectos en desarrollo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER FRAME -->
+<section id="founder">
+  <div class="content-wrap">
+    <div class="founder-inner">
+      <div class="founder-image">
+        [Fotografía del fundador — 480×600px]
+      </div>
+      <div class="founder-text">
+        <blockquote>
+          <p>DSRZ HQ es el punto de convergencia entre posibilidad y momentum. Aquí, los líderes que construyen el futuro encuentran capital, comunidad y claridad de propósito.</p>
+        </blockquote>
+        <p class="founder-name">Diego Leonardo Suárez López</p>
+        <p class="founder-role">Fundador</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access">
+  <div class="content-wrap">
+    <div class="access-inner">
+      <span class="eyebrow">Solicitar acceso</span>
+      <form class="access-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Nombre</label>
+          <input type="text" name="nombre" class="form-input" placeholder="Tu nombre completo" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Perfil</label>
+          <select name="perfil" class="form-select" required>
+            <option>Selecciona tu perfil</option>
+            <option>Emprendedor</option>
+            <option>Inversionista</option>
+            <option>Líder de equipo</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" class="form-input" placeholder="tu@email.com" required>
+        </div>
+        <button type="submit" class="form-submit">Enviar solicitud</button>
+      </form>
+      <div class="success-message" id="successMsg">
+        <p style="font-family: var(--font-ui); color: var(--fg-1); margin: 0; font-weight: 500;">¡Solicitud recibida! Te contactaremos pronto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="content-wrap">
+    <div class="footer-inner">
+      <a href="#top" class="footer-logo">
+        <img src="./assets/logos/DSRZ_lockup_horizontal_inverted.svg" alt="DSRZ">
+      </a>
+      <div class="footer-links">
+        <a href="#ecosystem">Ecosistema</a>
+        <a href="#vectors">Vectores</a>
+        <a href="#evidence">Evidencia</a>
+        <a href="#founder">Fundador</a>
+        <a href="#">Política de privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 24) {
+      nav.classList.add('solid');
+    } else {
+      nav.classList.remove('solid');
+    }
+  });
+
+  // Open access form
+  function openAccess() {
+    const accessSection = document.getElementById('access');
+    accessSection.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('[name="nombre"]').focus();
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const successMsg = document.getElementById('successMsg');
+
+    // Hide form, show success
+    form.style.display = 'none';
+    successMsg.classList.add('show');
+
+    // Reset after 4 seconds
+    setTimeout(() => {
+      form.style.display = 'flex';
+      successMsg.classList.remove('show');
+      form.reset();
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
