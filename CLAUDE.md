@@ -118,6 +118,18 @@ No uses: poder, quizás, solo, realmente, literalmente, desafío, sin embargo, a
 
 Sustituciones: poder→capacidad/efecto, quizás→define condición, desafío→barrera/fricción.
 
+## Deployment pipeline (FIJO)
+
+Flujo de despliegue: GitHub → Vercel (automático).
+
+1. Haz cambios en archivos
+2. Commit en main: git commit -m "descripción clara"
+3. Push: git push origin main
+4. Vercel detecta push automáticamente
+5. Auto-deploy en 10-30 segundos a dsrzhq.com
+
+Infraestructura: Vercel solamente. No cambiar a Netlify, GitHub Pages ni otros. Vercel escucha main continuamente y despliega sin intervención manual.
+
 ## Cierre operativo
 
 Cada respuesta termina accionable. Si falta info: preguntas cerradas (selección múltiple o sí/no) con recomendación y justificación. Si hay base: confirma criterio y procede.
