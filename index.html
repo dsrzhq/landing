@@ -1,962 +1,989 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DSRZ HQ — Donde las ideas se convierten en impacto v2</title>
-  <meta name="description" content="Plataforma premium para emprendedores, inversionistas y líderes.">
-  <link rel="stylesheet" href="./colors_and_type.css">
-  <style>
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body { background: var(--white); }
-
-    /* Sticky nav */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: background var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard);
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DSRZ HQ — donde las ideas se convierten en impacto</title>
+  <meta name="description" content="DSRZ HQ es el punto de entrada al ecosistema DSRZ.">
+  <link rel="canonical" href="https://dsrzhq.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dsrzhq.com/">
+  <meta property="og:title" content="DSRZ HQ — donde las ideas se convierten en impacto">
+  <meta property="og:description" content="DSRZ HQ es el punto de entrada al ecosistema DSRZ.">
+  <meta property="og:image" content="https://dsrzhq.com/assets/og/dsrzhq-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="DSRZ HQ">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DSRZ HQ — donde las ideas se convierten en impacto">
+  <meta name="twitter:description" content="DSRZ HQ es el punto de entrada al ecosistema DSRZ.">
+  <meta name="twitter:image" content="https://dsrzhq.com/assets/og/dsrzhq-og.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "DSRZ HQ",
+      "legalName": "DSRZ HQ",
+      "url": "https://dsrzhq.com/",
+      "logo": "https://dsrzhq.com/assets/logos/DSRZ_lockup_horizontal_inverted.svg",
+      "description": "DSRZ HQ es el punto de entrada al ecosistema DSRZ."
     }
-    header.solid {
+  </script>
+  <link rel="icon" href="assets/logos/DSRZ_favicon_silhouette.svg">
+  <style>
+    /* ── FONTS (self-hosted, paths relative to this file) ────────────────── */
+    @font-face { font-family:'Space Grotesk'; font-weight:300; font-style:normal; font-display:swap; src:url('fonts/SpaceGrotesk-Light.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-weight:400; font-style:normal; font-display:swap; src:url('fonts/SpaceGrotesk-Regular.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-weight:500; font-style:normal; font-display:swap; src:url('fonts/SpaceGrotesk-Medium.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-weight:600; font-style:normal; font-display:swap; src:url('fonts/SpaceGrotesk-SemiBold.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-weight:700; font-style:normal; font-display:swap; src:url('fonts/SpaceGrotesk-Bold.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-weight:400; font-style:normal; font-display:swap; src:url('fonts/Inter_18pt-Regular.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-weight:500; font-style:normal; font-display:swap; src:url('fonts/Inter_18pt-Medium.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-weight:600; font-style:normal; font-display:swap; src:url('fonts/Inter_18pt-SemiBold.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-weight:700; font-style:normal; font-display:swap; src:url('fonts/Inter_18pt-Bold.woff2') format('woff2'); }
+    @font-face { font-family:'Source Serif 4'; font-weight:400; font-style:normal; font-display:swap; src:url('fonts/SourceSerif4-Regular.woff2') format('woff2'); }
+    @font-face { font-family:'Source Serif 4'; font-weight:600; font-style:normal; font-display:swap; src:url('fonts/SourceSerif4-SemiBold.woff2') format('woff2'); }
+    @font-face { font-family:'Source Serif 4'; font-weight:400; font-style:italic; font-display:swap; src:url('fonts/SourceSerif4-Italic.woff2') format('woff2'); }
+
+    /* ── DESIGN TOKENS ───────────────────────────────────────────────────── */
+    :root {
+      --obsidian:      #111111;
+      --white:         #FFFFFF;
+      --momentum-blue: #2563EB;
+      --impact-cyan:   #06B6D4;
+      --signal-amber:  #F59E0B;
+      --deep-navy:     #0F172A;
+      --slate-900: #1F2937; --slate-700: #374151;
+      --slate-500: #6B7280; --slate-300: #D1D5DB; --slate-100: #F3F4F6;
+      --fg-1: var(--obsidian);  --fg-2: var(--slate-700); --fg-3: var(--slate-500);
+      --line-1: var(--slate-300); --line-on-dark: rgba(255,255,255,0.15);
+      --accent: var(--momentum-blue); --accent-hover: #1D4ED8; --accent-press: #1E40AF;
+      --font-display: 'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+      --font-ui:      'Inter','Helvetica Neue',Arial,sans-serif;
+      --font-serif:   'Source Serif 4',Georgia,'Times New Roman',serif;
+      --ease-standard: cubic-bezier(0.4,0.0,0.2,1);
+      --dur: 200ms; --dur-fast: 120ms; --dur-slow: 360ms;
+    }
+
+    /* ── RESETS ──────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--obsidian); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: var(--font-ui); cursor: pointer; }
+    ::selection { background: var(--momentum-blue); color: #fff; }
+    .hidden { display: none !important; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 2px solid var(--momentum-blue); outline-offset: 2px;
+    }
+
+    /* ── LAYOUT ──────────────────────────────────────────────────────────── */
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 80px; box-sizing: border-box; }
+
+    /* ── EYEBROW ─────────────────────────────────────────────────────────── */
+    .ew {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-ui); font-weight: 600; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--fg-3);
+    }
+    .ew::before { content:''; display:block; width:24px; height:1px; background:var(--momentum-blue); flex-shrink:0; }
+    .ew-dark { color: var(--slate-500); }
+
+    /* ── BUTTONS ─────────────────────────────────────────────────────────── */
+    .btn {
+      font-family: var(--font-ui); font-weight: 600; font-size: 15px;
+      padding: 13px 24px; border-radius: 2px; border: 1.5px solid transparent;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 9px;
+      letter-spacing: 0.01em; line-height: 1;
+      transition: background var(--dur) var(--ease-standard),
+                  border-color var(--dur) var(--ease-standard),
+                  color var(--dur) var(--ease-standard);
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-primary:active { background: var(--accent-press); }
+    .btn-ghost-dark { background: transparent; color: #fff; border-color: var(--line-on-dark); }
+    .btn-ghost-dark:hover { border-color: #fff; }
+    .btn-ghost-light { background: transparent; color: var(--fg-1); border-color: var(--line-1); }
+    .btn-ghost-light:hover { border-color: var(--obsidian); }
+    .btn-dark { background: var(--obsidian); color: #fff; }
+    .btn-dark:hover { background: #000; }
+
+    /* ── FORM FIELDS ─────────────────────────────────────────────────────── */
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field label {
+      font-family: var(--font-ui); font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--fg-3);
+    }
+    .field input, .field select {
+      font-family: var(--font-ui); font-size: 15px; color: var(--fg-1);
+      padding: 12px 14px; border: 1.5px solid var(--line-1); border-radius: 2px;
+      background: var(--white); outline: none; width: 100%;
+      transition: border-color var(--dur) var(--ease-standard);
+      -webkit-appearance: none; appearance: none;
+    }
+    .field input:focus, .field select:focus { border-color: var(--momentum-blue); }
+    .form-legal { font-family: var(--font-ui); font-size: 13px; line-height: 1.55; color: var(--fg-3); }
+    .form-legal a { text-decoration: underline; text-underline-offset: 0.16em; }
+
+    /* ── NAV ─────────────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 60;
+      background: transparent; border-bottom: 1px solid transparent;
+      transition: background var(--dur) var(--ease-standard),
+                  border-color var(--dur) var(--ease-standard);
+    }
+    .nav.solid {
       background: var(--obsidian);
       border-bottom-color: rgba(255,255,255,0.10);
     }
-
-    .nav-wrap {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-    .nav-logo img {
-      height: 28px;
-      width: auto;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 38px;
-    }
-    nav a {
-      font-family: var(--font-ui);
-      font-size: 15px;
-      font-weight: 500;
+    .nav-inner { height: 80px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo img { height: 28px; }
+    .nav-links { display: flex; align-items: center; gap: 38px; }
+    .nav-links a {
+      font-family: var(--font-ui); font-size: 15px; font-weight: 500;
       color: rgba(255,255,255,0.72);
-      text-decoration: none;
-      letter-spacing: 0.01em;
       transition: color var(--dur) var(--ease-standard);
     }
-    nav a:hover {
-      color: #fff;
-    }
+    .nav-links a:hover { color: #fff; }
 
-    /* Sections */
-    section {
-      position: relative;
+    /* ── HERO ────────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative; background: var(--deep-navy); color: #fff;
+      overflow: hidden; margin-top: -80px; padding-top: 80px;
     }
-
-    .content-wrap {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 80px;
-      box-sizing: border-box;
-    }
-
-    /* Hero */
-    #hero {
-      background: #0F172A;
-      color: #fff;
-      overflow: hidden;
-      margin-top: -80px;
-      padding-top: 80px;
-    }
-
     .hero-lines {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 420px;
-      height: 320px;
+      position: absolute; top: -60px; right: -40px; width: 720px; height: 520px;
       pointer-events: none;
-      background-image: repeating-linear-gradient(54deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 26px);
+      background-image: repeating-linear-gradient(
+        54deg, rgba(255,255,255,0.07) 0px, rgba(255,255,255,0.07) 1px,
+        transparent 1px, transparent 26px
+      );
+      -webkit-mask-image: radial-gradient(120% 120% at 100% 0%, #000 30%, transparent 72%);
+      mask-image: radial-gradient(120% 120% at 100% 0%, #000 30%, transparent 72%);
+    }
+    .hero-content { position: relative; padding-top: 96px; padding-bottom: 96px; }
+    .hero-max { max-width: 880px; }
+    .hero h1 {
+      font-family: var(--font-display); font-weight: 700; font-size: 56px;
+      line-height: 1.08; letter-spacing: -0.02em; margin: 26px 0 0; color: #fff;
+    }
+    .hero h1 .accent { color: var(--momentum-blue); }
+    .hero-lead {
+      font-family: var(--font-ui); font-size: 20px; line-height: 1.6;
+      color: var(--slate-300); max-width: 620px; margin: 28px 0 0;
+    }
+    .hero-ctas { display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+
+    /* ── SIGNAL ──────────────────────────────────────────────────────────── */
+    .signal { background: var(--white); }
+    .signal-inner { padding-top: 128px; padding-bottom: 128px; }
+    .signal blockquote { margin: 32px 0 0; }
+    .signal blockquote p {
+      font-family: var(--font-serif); font-style: italic; font-weight: 400;
+      font-size: 46px; line-height: 1.28; letter-spacing: -0.01em; color: var(--fg-1);
+      max-width: 1080px;
     }
 
-    .hero-inner {
-      max-width: 880px;
-      padding-top: 96px;
-      padding-bottom: 96px;
+    /* ── ECOSYSTEM ───────────────────────────────────────────────────────── */
+    .ecosystem { background: var(--deep-navy); color: #fff; }
+    .eco-inner { padding-top: 112px; padding-bottom: 112px; }
+    .eco-inner h2 {
+      font-family: var(--font-display); font-weight: 700; font-size: 42px;
+      line-height: 1.12; letter-spacing: -0.02em; margin: 20px 0 8px; color: #fff; max-width: 760px;
+    }
+    .eco-lead {
+      font-family: var(--font-ui); font-size: 18px; line-height: 1.6;
+      color: var(--slate-300); max-width: 600px; margin: 0 0 56px;
+    }
+    .diagram-wrap {
+      position: relative; width: 100%; height: auto; aspect-ratio: 1280 / 520;
+      margin: 0 auto; max-width: 100%; overflow: hidden;
+    }
+    .diagram-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .node-center {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: 180px; height: 180px; background: var(--obsidian);
+      border: 1.5px solid var(--momentum-blue); border-radius: 2px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    }
+    .node-center img { height: 56px; }
+    .node-center-lbl {
+      font-family: var(--font-display); font-weight: 700; font-size: 17px;
+      letter-spacing: 0.04em; color: #fff;
+    }
+    .node-sat {
+      position: absolute; transform: translate(-50%,-50%);
+      min-width: 150px; padding: 14px 18px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 2px; text-align: center; pointer-events: none;
+    }
+    .node-sat-name { font-family: var(--font-display); font-weight: 600; font-size: 16px; color: #fff; white-space: nowrap; }
+    .node-sat-kind {
+      font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.16em; color: var(--slate-500); margin-top: 5px;
     }
 
-    .hero-inner h1 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 56px;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin: 26px 0 0;
-      color: #fff;
+    /* ── VECTORS ─────────────────────────────────────────────────────────── */
+    .vectors { background: var(--white); color: var(--fg-1); }
+    .vec-inner { padding-top: 112px; padding-bottom: 112px; }
+    .vec-inner h2 {
+      font-family: var(--font-display); font-weight: 700; font-size: 42px;
+      line-height: 1.12; letter-spacing: -0.02em; margin: 20px 0 56px; color: var(--fg-1); max-width: 720px;
+    }
+    .vec-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .vec-card {
+      border: 1px solid var(--slate-300); border-radius: 2px;
+      padding: 36px 32px 32px; background: var(--white);
+      transition: border-color 200ms var(--ease-standard);
+      display: flex; flex-direction: column; min-height: 280px;
+    }
+    .vec-card:hover { border-color: var(--momentum-blue); }
+    .card-icon {
+      width: 48px; height: 48px; border: 1.5px solid var(--line-1);
+      border-radius: 2px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px; color: var(--fg-1); flex-shrink: 0;
+    }
+    .vec-card h3 {
+      font-family: var(--font-display); font-weight: 700; font-size: 24px;
+      line-height: 1.2; margin: 0 0 12px; color: var(--fg-1);
+    }
+    .vec-card p {
+      font-family: var(--font-ui); font-size: 16px; line-height: 1.65;
+      color: var(--fg-2); margin: 0 0 28px;
+    }
+    .card-link {
+      margin-top: auto; display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-ui); font-weight: 600; font-size: 15px;
+      color: var(--fg-1); transition: color 200ms var(--ease-standard);
+    }
+    .card-link:hover { color: var(--momentum-blue); }
+
+    /* ── EVIDENCE ────────────────────────────────────────────────────────── */
+    .evidence { background: var(--slate-100); }
+    .ev-inner { padding-top: 112px; padding-bottom: 112px; }
+    .ev-inner h2 {
+      font-family: var(--font-display); font-weight: 700; font-size: 42px;
+      line-height: 1.12; letter-spacing: -0.02em; margin: 20px 0 56px; color: var(--fg-1); max-width: 720px;
+    }
+    .ev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .ev-grid figure { position: relative; margin: 0; }
+    .ev-grid image-slot {
+      display: block; width: 100%; height: 300px;
+      filter: grayscale(1); background: var(--white); border: 1px solid var(--line-1);
+    }
+    .ev-caption {
+      position: absolute; left: 16px; bottom: 16px;
+      background: var(--momentum-blue); color: #fff;
+      font-family: var(--font-ui); font-weight: 600; font-size: 12px;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      padding: 7px 12px; border-radius: 2px;
     }
 
-    .hero-inner h1 .blue {
-      color: #2563EB;
+    /* ── FOUNDER ─────────────────────────────────────────────────────────── */
+    .founder { background: var(--obsidian); color: #fff; }
+    .founder-inner { padding-top: 112px; padding-bottom: 112px; }
+    .founder-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 0; align-items: stretch; }
+    .founder-img { padding-right: 64px; }
+    .founder-img image-slot {
+      display: block; width: 100%; aspect-ratio: 3/4;
+      filter: grayscale(1); background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.14);
     }
-
-    .hero-inner p {
-      font-family: var(--font-ui);
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 1.6;
-      color: var(--slate-300);
-      max-width: 620px;
-      margin: 28px 0 0;
+    .founder-text {
+      border-left: 2px solid var(--momentum-blue); padding-left: 56px;
+      display: flex; flex-direction: column; justify-content: center;
     }
-
-    .hero-ctas {
-      display: flex;
-      gap: 14px;
-      margin-top: 40px;
+    .founder-text h2 {
+      font-family: var(--font-display); font-weight: 700; font-size: 40px;
+      line-height: 1.12; letter-spacing: -0.02em; margin: 22px 0 6px; color: #fff;
     }
-
-    /* Signal */
-    #signal {
-      background: var(--white);
-    }
-
-    .signal-inner {
-      padding-top: 128px;
-      padding-bottom: 128px;
-    }
-
-    .signal-inner blockquote {
-      margin: 32px 0 0;
-    }
-
-    .signal-inner blockquote p {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 46px;
-      line-height: 1.28;
-      letter-spacing: -0.01em;
-      color: var(--fg-1);
-      margin: 0;
-    }
-
-    /* Ecosystem */
-    #ecosystem {
-      background: #0F172A;
-      color: #fff;
-    }
-
-    .ecosystem-inner {
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-
-    .ecosystem-inner h2 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 40px;
-      line-height: 1.2;
-      margin-top: 24px;
-      color: #fff;
-    }
-
-    .ecosystem-inner p {
-      font-family: var(--font-ui);
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--slate-300);
-      margin-top: 16px;
-      max-width: 720px;
-    }
-
-    .constellation-svg {
-      width: 100%;
-      max-width: 560px;
-      height: auto;
-      margin-top: 64px;
-    }
-
-    /* Vectors */
-    #vectors {
-      background: var(--white);
-    }
-
-    .vectors-inner {
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-
-    .vectors-inner h2 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 40px;
-      line-height: 1.2;
-      margin-top: 24px;
-      max-width: 760px;
-    }
-
-    .vectors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 64px;
-    }
-
-    .vector-card {
-      background: var(--white);
-      border: 1px solid var(--line-1);
-      border-radius: 2px;
-      padding: 40px 32px;
-      transition: border-color var(--dur) var(--ease-standard);
-      text-align: center;
-    }
-
-    .vector-card:hover {
-      border-color: #2563EB;
-    }
-
-    .vector-icon {
-      width: 24px;
-      height: 24px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .vector-icon svg {
-      width: 100%;
-      height: 100%;
-      stroke: var(--fg-1);
-      stroke-width: 1.5;
-      fill: none;
-    }
-
-    .vector-card h3 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 1.2;
-      margin: 0 0 16px;
-      color: var(--fg-1);
-    }
-
-    .vector-card p {
-      font-family: var(--font-ui);
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--fg-2);
-      margin: 0 0 24px;
-    }
-
-    .vector-card a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-ui);
-      font-weight: 600;
-      font-size: 15px;
-      color: #2563EB;
-      text-decoration: none;
-      transition: color var(--dur) var(--ease-standard);
-    }
-
-    .vector-card a:hover {
-      color: #1D4ED8;
-    }
-
-    .vector-card a svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* Evidence */
-    #evidence {
-      background: var(--slate-100);
-    }
-
-    .evidence-inner {
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-
-    .evidence-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      margin-top: 64px;
-    }
-
-    .evidence-item {
-      text-align: center;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--line-1);
-    }
-
-    .evidence-item:last-child {
-      border-bottom: none;
-    }
-
-    .evidence-stat {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 40px;
-      line-height: 1.2;
-      color: var(--fg-1);
-      margin: 0;
-    }
-
-    .evidence-label {
-      font-family: var(--font-ui);
-      font-weight: 600;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--fg-3);
-      margin-top: 8px;
-    }
-
-    /* Founder Frame */
-    #founder {
-      background: var(--obsidian);
-      color: #fff;
-    }
-
-    .founder-inner {
-      padding-top: 96px;
-      padding-bottom: 96px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .founder-image {
-      aspect-ratio: 4/5;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--line-on-dark);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--slate-500);
-      font-family: var(--font-ui);
-      font-size: 14px;
-    }
-
-    .founder-text blockquote {
-      margin: 0;
-    }
-
-    .founder-text blockquote p {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 1.5;
-      color: #fff;
-      margin: 0 0 32px;
-    }
-
-    .founder-name {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #fff;
-      margin: 0 0 8px;
-    }
-
     .founder-role {
-      font-family: var(--font-ui);
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--slate-500);
+      font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.16em; color: var(--slate-500); margin-bottom: 26px;
+    }
+    .founder-text p {
+      font-family: var(--font-serif); font-size: 18px; line-height: 1.7;
+      color: var(--slate-300); margin: 0 0 18px;
+    }
+    .founder-text p:last-child { margin: 0; }
+
+    /* ── ACCESS ──────────────────────────────────────────────────────────── */
+    .access { background: var(--obsidian); color: #fff; }
+    .acc-inner { padding-top: 112px; padding-bottom: 112px; }
+    .acc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+    .acc-copy { padding-top: 8px; }
+    .acc-copy h2 {
+      font-family: var(--font-display); font-weight: 700; font-size: 42px;
+      line-height: 1.1; letter-spacing: -0.02em; margin: 22px 0 0; color: #fff;
+    }
+    .acc-copy > p {
+      font-family: var(--font-ui); font-size: 17px; line-height: 1.7;
+      color: var(--slate-300); margin: 22px 0 0; max-width: 420px;
+    }
+    .acc-criteria { margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12); }
+    .acc-criteria-lbl {
+      font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.16em; color: var(--slate-500); margin-bottom: 16px;
+    }
+    .acc-criteria ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .acc-criteria li { display: flex; align-items: center; gap: 10px; }
+    .acc-criteria li::before { content:''; width:5px; height:5px; background:var(--momentum-blue); flex-shrink:0; }
+    .acc-criteria li span { font-family: var(--font-ui); font-size: 15px; color: var(--slate-300); }
+    .acc-panel {
+      background: var(--white); border: 1px solid var(--line-1);
+      border-radius: 2px; padding: 40px;
+    }
+    .acc-panel form { display: flex; flex-direction: column; gap: 20px; }
+    .acc-success { text-align: center; padding: 24px 0; }
+    .acc-success-icon {
+      width: 52px; height: 52px; background: var(--momentum-blue);
+      border-radius: 2px; display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 24px; color: #fff;
+    }
+    .acc-success h3 {
+      font-family: var(--font-display); font-weight: 700; font-size: 24px;
+      letter-spacing: -0.01em; margin: 0 0 12px; color: var(--fg-1);
+    }
+    .acc-success p {
+      font-family: var(--font-serif); font-size: 16px; line-height: 1.65;
+      color: var(--fg-2); margin: 0 auto 28px; max-width: 320px;
     }
 
-    /* Access */
-    #access {
-      background: var(--white);
+    /* ── FOOTER ──────────────────────────────────────────────────────────── */
+    .footer { background: var(--obsidian); color: #fff; }
+    .footer-inner { padding-top: 80px; padding-bottom: 44px; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px;
+      padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.10);
     }
-
-    .access-inner {
-      padding-top: 96px;
-      padding-bottom: 96px;
-      max-width: 520px;
+    .footer-brand img { height: 30px; margin-bottom: 20px; }
+    .footer-brand p { font-family: var(--font-serif); font-size: 16px; line-height: 1.6; color: var(--slate-300); max-width: 280px; }
+    .footer-col-title {
+      font-family: var(--font-ui); font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.16em; color: var(--slate-500); margin-bottom: 18px;
     }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-col a { font-family: var(--font-ui); font-size: 15px; color: var(--slate-500); transition: color var(--dur) var(--ease-standard); }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 30px; }
+    .footer-bottom span { font-family: var(--font-ui); font-size: 13px; color: var(--slate-500); }
+    .footer-bottom span:last-child { letter-spacing: 0.04em; }
 
-    .access-form {
-      margin-top: 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    /* ── MODAL ───────────────────────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(17,17,17,0.55); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; padding: 24px;
     }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
+    .modal-panel {
+      width: 100%; max-width: 520px; background: var(--white);
+      border: 1px solid var(--line-1); border-radius: 2px; position: relative;
     }
-
-    .form-label {
-      font-family: var(--font-ui);
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--fg-3);
-    }
-
-    .form-input, .form-select {
-      font-family: var(--font-ui);
-      font-size: 15px;
-      color: var(--fg-1);
-      padding: 12px 14px;
-      border: 1.5px solid var(--line-1);
-      border-radius: 2px;
-      background: var(--white);
-      outline: none;
-      transition: border-color var(--dur) var(--ease-standard);
-    }
-
-    .form-input:focus, .form-select:focus {
-      border-color: #2563EB;
-    }
-
-    .form-submit {
-      font-family: var(--font-ui);
-      font-weight: 600;
-      font-size: 15px;
-      padding: 13px 24px;
-      border-radius: 2px;
-      border: 1.5px solid transparent;
-      background: #2563EB;
-      color: #fff;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      letter-spacing: 0.01em;
-      transition: background var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard);
-      margin-top: 24px;
-    }
-
-    .form-submit:hover {
-      background: #1D4ED8;
-    }
-
-    .form-submit:active {
-      background: #1E40AF;
-    }
-
-    .success-message {
-      display: none;
-      margin-top: 48px;
-      padding: 24px;
-      background: var(--slate-100);
-      border: 1px solid var(--line-1);
-      border-radius: 2px;
-      text-align: center;
-    }
-
-    .success-message.show {
-      display: block;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--obsidian);
-      color: #fff;
-      border-top: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .footer-inner {
-      padding-top: 48px;
-      padding-bottom: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-logo img {
-      height: 32px;
-      width: auto;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 40px;
-    }
-
-    .footer-links a {
-      font-family: var(--font-ui);
-      font-size: 14px;
-      color: rgba(255,255,255,0.72);
-      text-decoration: none;
+    .modal-close {
+      position: absolute; top: 20px; right: 20px;
+      background: none; border: 0; cursor: pointer; color: var(--fg-3);
+      display: flex; padding: 4px; border-radius: 2px;
       transition: color var(--dur) var(--ease-standard);
     }
-
-    .footer-links a:hover {
-      color: #fff;
+    .modal-close:hover { color: var(--fg-1); }
+    .modal-body { padding: 40px 40px 36px; }
+    .modal-body h3 {
+      font-family: var(--font-display); font-weight: 700; font-size: 28px;
+      line-height: 1.15; letter-spacing: -0.01em; margin: 18px 0 6px; color: var(--fg-1);
+    }
+    .modal-body > p { font-family: var(--font-ui); font-size: 15px; line-height: 1.6; color: var(--fg-2); margin: 0 0 28px; }
+    .modal-form { display: flex; flex-direction: column; gap: 18px; }
+    .modal-success { padding: 56px 40px; text-align: center; }
+    .modal-success h3 { font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: -0.01em; margin: 0 0 10px; color: var(--fg-1); }
+    .modal-success p { font-family: var(--font-serif); font-size: 17px; line-height: 1.6; color: var(--fg-2); margin: 0 auto 28px; max-width: 340px; }
+    .success-icon {
+      width: 52px; height: 52px; background: var(--momentum-blue); border-radius: 2px;
+      display: inline-flex; align-items: center; justify-content: center; margin-bottom: 22px; color: #fff;
     }
 
-    /* Eyebrow */
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-ui);
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--fg-3);
+    /* ── NAV HAMBURGER ──────────────────────────────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      background: none; border: 0; cursor: pointer; color: #fff;
+      padding: 8px; align-items: center; justify-content: center;
+      border-radius: 2px; line-height: 0;
+      transition: opacity var(--dur) var(--ease-standard);
     }
+    .nav-hamburger:hover { opacity: 0.72; }
 
-    .eyebrow-dark {
-      color: var(--slate-500);
+    /* ── MOBILE MENU ─────────────────────────────────────────────────────── */
+    .mobile-menu {
+      position: fixed; top: 80px; left: 0; right: 0; bottom: 0;
+      z-index: 59; background: var(--obsidian);
+      border-top: 1px solid rgba(255,255,255,0.10);
+      overflow-y: auto; padding: 8px 0 48px;
     }
-
-    .eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 24px;
-      height: 1px;
-      background: #2563EB;
+    .mobile-menu-nav {
+      display: flex; flex-direction: column;
     }
-
-    /* Button */
-    .btn {
-      font-family: var(--font-ui);
-      font-weight: 600;
-      font-size: 15px;
-      padding: 13px 24px;
-      border-radius: 2px;
-      border: 1.5px solid transparent;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      letter-spacing: 0.01em;
-      transition: background var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard), color var(--dur) var(--ease-standard);
-      line-height: 1;
-      text-decoration: none;
+    .mobile-menu-nav a {
+      font-family: var(--font-ui); font-size: 20px; font-weight: 500;
+      color: rgba(255,255,255,0.72); padding: 20px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color var(--dur) var(--ease-standard);
     }
+    .mobile-menu-nav a:hover { color: #fff; }
+    .mobile-menu-cta { padding: 32px 24px 0; }
+    .mobile-menu-cta .btn { width: 100%; justify-content: center; }
 
-    .btn-primary {
-      background: #2563EB;
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: #1D4ED8;
-    }
-
-    .btn-primary:active {
-      background: #1E40AF;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--fg-1);
-      border-color: var(--line-1);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--obsidian);
-    }
-
-    .btn-ghost-dark {
-      background: transparent;
-      color: #fff;
-      border-color: var(--line-on-dark);
-    }
-
-    .btn-ghost-dark:hover {
-      border-color: #fff;
-    }
-
-    /* Responsive */
+    /* ── TABLET (≤ 1024px) ───────────────────────────────────────────────── */
     @media (max-width: 1024px) {
-      .nav-wrap, .content-wrap {
-        padding: 0 48px;
-      }
-      .founder-inner {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .footer-inner {
-        flex-direction: column;
-        gap: 32px;
-        text-align: center;
-      }
-      .footer-links {
-        justify-content: center;
-      }
+      .wrap { padding: 0 40px; }
+
+      .hero h1 { font-size: 45px; }
+      .hero-lead { font-size: 18px; }
+
+      .signal-inner { padding-top: 96px; padding-bottom: 96px; }
+      .signal blockquote p { font-size: 37px; }
+
+      .eco-inner h2 { font-size: 34px; }
+      .eco-lead { font-size: 16px; }
+
+      .vec-inner h2 { font-size: 34px; }
+
+      .ev-inner h2 { font-size: 34px; }
+
+      .founder-text h2 { font-size: 32px; }
+      .founder-text p { font-size: 16px; }
+
+      .acc-copy h2 { font-size: 34px; }
+
+      .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
     }
 
+    /* ── MOBILE (≤ 768px) ────────────────────────────────────────────────── */
     @media (max-width: 768px) {
-      .nav-wrap, .content-wrap {
-        padding: 0 24px;
+      .wrap { padding: 0 24px; }
+
+      /* NAV */
+      .nav-inner { height: 64px; }
+      .mobile-menu { top: 64px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Keep the HTML node overlay proportional to the fluid SVG. */
+      .node-center,
+      .node-sat { transform: translate(-50%,-50%) scale(0.75); }
+
+      /* HERO */
+      .hero-content { padding-top: 64px; padding-bottom: 72px; }
+      .hero h1 { font-size: clamp(32px, 8.8vw, 36px); line-height: 1.1; }
+      .hero-lead { font-size: 16px; max-width: 100%; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { justify-content: center; }
+
+      /* SIGNAL */
+      .signal-inner { padding-top: 72px; padding-bottom: 72px; }
+      .signal blockquote p { font-size: 26px; }
+
+      /* ECOSYSTEM */
+      .eco-inner { padding-top: 72px; padding-bottom: 72px; }
+      .eco-inner h2 { font-size: 28px; }
+      .eco-lead { font-size: 16px; margin-bottom: 40px; }
+
+      /* VECTORS */
+      .vec-inner { padding-top: 72px; padding-bottom: 72px; }
+      .vec-inner h2 { font-size: 28px; margin-bottom: 32px; }
+      .vec-grid { grid-template-columns: 1fr; }
+
+      /* EVIDENCE */
+      .ev-inner { padding-top: 72px; padding-bottom: 72px; }
+      .ev-inner h2 { font-size: 28px; margin-bottom: 32px; }
+      .ev-grid,
+      .ev-stats { grid-template-columns: 1fr !important; }
+
+      /* FOUNDER */
+      .founder-inner { padding-top: 72px; padding-bottom: 72px; }
+      .founder-grid { grid-template-columns: 1fr; gap: 0; }
+      .founder-img { padding-right: 0; padding-bottom: 40px; }
+      .founder-text {
+        border-left: none; border-top: 2px solid var(--momentum-blue);
+        padding-left: 0; padding-top: 40px;
       }
-      nav {
-        gap: 20px;
-      }
-      nav a {
-        font-size: 13px;
-      }
-      .hero-inner {
-        padding-top: 64px;
-        padding-bottom: 64px;
-      }
-      .hero-inner h1 {
-        font-size: 40px;
-      }
-      .hero-inner p {
-        font-size: 16px;
-      }
-      .hero-ctas {
-        flex-direction: column;
-      }
-      .signal-inner blockquote p {
-        font-size: 32px;
-      }
-      .ecosystem-inner h2, .vectors-inner h2 {
-        font-size: 32px;
-      }
-      .vectors-grid {
-        grid-template-columns: 1fr;
-      }
+      .founder-text h2 { font-size: 28px; }
+      .founder-text p { font-size: 16px; }
+
+      /* ACCESS */
+      .acc-inner { padding-top: 72px; padding-bottom: 72px; }
+      .acc-grid { grid-template-columns: 1fr; gap: 40px; }
+      .acc-copy h2 { font-size: 28px; }
+      .acc-panel { padding: 28px 24px; }
+
+      /* FOOTER */
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
     }
 
-    @media (max-width: 640px) {
-      .nav-wrap {
-        height: auto;
-        flex-direction: column;
-        padding: 16px 24px;
-        gap: 16px;
+    /* ── COMPACT MOBILE DIAGRAM (≤ 520px) ────────────────────────────────── */
+    @media (max-width: 520px) {
+      .diagram-wrap {
+        aspect-ratio: auto;
+        display: flex; flex-direction: column; gap: 24px;
+        overflow: visible;
       }
-      nav {
-        width: 100%;
-        justify-content: space-between;
-        flex-wrap: wrap;
+      .diagram-svg { display: none; }
+      .node-center,
+      .node-sat {
+        position: relative;
+        left: auto !important; top: auto !important;
+        transform: none;
+        width: 100%; min-width: 0; height: auto;
       }
-      .nav-logo {
-        width: 100%;
-      }
-      #hero {
-        margin-top: -auto;
-      }
-      .hero-inner {
-        padding-top: 48px;
-        padding-bottom: 48px;
-      }
-      .hero-inner h1 {
-        font-size: 28px;
-      }
-      .hero-lines {
-        width: 200px;
-        height: 200px;
-      }
+      .node-center { min-height: 180px; }
     }
   </style>
 </head>
-<body class="dsrz">
+<body>
 
-<!-- NAV -->
-<header id="nav">
-  <div class="nav-wrap">
-    <a href="#top" class="nav-logo">
-      <img src="./assets/logos/DSRZ_lockup_horizontal_inverted.svg" alt="DSRZ">
-    </a>
-    <nav>
-      <a href="#ecosystem">Ecosistema</a>
-      <a href="#vectors">Vectores</a>
-      <a href="#evidence">Evidencia</a>
-      <a href="#founder">Fundador</a>
-      <button class="btn btn-primary" onclick="openAccess()">Entrar</button>
-    </nav>
-  </div>
-</header>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-lines" aria-hidden="true"></div>
-  <div class="content-wrap">
-    <div class="hero-inner">
-      <span class="eyebrow">Organized Momentum</span>
-      <h1>Donde las ideas se convierten en <span class="blue">impacto</span>.</h1>
-      <p>DSRZ HQ es el punto de entrada al ecosistema DSRZ.</p>
-      <div class="hero-ctas">
-        <button class="btn btn-primary" onclick="openAccess()">Entrar al ecosistema</button>
-        <button class="btn btn-ghost-dark">Conocer la visión</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SIGNAL -->
-<section id="signal">
-  <div class="content-wrap">
-    <div class="signal-inner">
-      <span class="eyebrow">Señal</span>
-      <blockquote>
-        <p>La plataforma donde las ideas se convierten en impacto.</p>
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-<!-- ECOSYSTEM -->
-<section id="ecosystem">
-  <div class="content-wrap">
-    <div class="ecosystem-inner">
-      <span class="eyebrow eyebrow-dark">El Ecosistema</span>
-      <h2>Una constelación organizada alrededor de DSRZ HQ.</h2>
-      <p>El ecosistema se organiza alrededor de cinco satélites documentados. La activación pública queda condicionada al cierre de evidencia mínima y validación del set final.</p>
-
-      <svg class="constellation-svg" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg">
-        <!-- Central node -->
-        <g>
-          <rect x="200" y="110" width="160" height="160" rx="2" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-          <image x="240" y="150" width="80" height="80" href="./assets/logos/DSRZ_isotype_white.svg" />
-        </g>
-
-        <!-- Satellites -->
-        <g opacity="0.6">
-          <!-- Top -->
-          <line x1="280" y1="110" x2="280" y2="20" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
-          <circle cx="280" cy="20" r="3.5" fill="#2563EB"/>
-          <rect x="240" y="0" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
-
-          <!-- Right-top -->
-          <line x1="360" y1="110" x2="420" y2="50" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
-          <circle cx="420" cy="50" r="3.5" fill="#2563EB"/>
-          <rect x="390" y="30" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
-
-          <!-- Right-bottom -->
-          <line x1="360" y1="190" x2="420" y2="280" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
-          <circle cx="420" cy="280" r="3.5" fill="#2563EB"/>
-          <rect x="390" y="300" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
-
-          <!-- Left-bottom -->
-          <line x1="200" y1="190" x2="80" y2="280" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
-          <circle cx="80" cy="280" r="3.5" fill="#2563EB"/>
-          <rect x="40" y="300" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
-
-          <!-- Left-top -->
-          <line x1="200" y1="110" x2="80" y2="50" stroke="#2563EB" stroke-width="1.5" stroke-opacity="0.55"/>
-          <circle cx="80" cy="50" r="3.5" fill="#2563EB"/>
-          <rect x="40" y="30" width="80" height="32" rx="2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- VECTORS -->
-<section id="vectors">
-  <div class="content-wrap">
-    <div class="vectors-inner">
-      <span class="eyebrow">Vectores de acción</span>
-      <h2>Tres ángulos de activación.</h2>
-
-      <div class="vectors-grid">
-        <!-- Editorial -->
-        <div class="vector-card">
-          <div class="vector-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 19l-7-3v-5l7-3 7 3v5l-7 3zm0-5L7 11v3l5 2 5-2v-3l-5 3z"/>
-            </svg>
-          </div>
-          <h3>Editorial</h3>
-          <p>Voz autoral y análisis de tendencias en tecnología y negocio.</p>
-          <a href="#" onclick="return false">Ver más →</a>
-        </div>
-
-        <!-- Capital -->
-        <div class="vector-card">
-          <div class="vector-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2l9 5v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V7l9-5z"/>
-            </svg>
-          </div>
-          <h3>Capital</h3>
-          <p>Acceso a rondas de inversión y alianzas estratégicas.</p>
-          <a href="#" onclick="return false">Ver más →</a>
-        </div>
-
-        <!-- Comunidad -->
-        <div class="vector-card">
-          <div class="vector-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-            </svg>
-          </div>
-          <h3>Comunidad</h3>
-          <p>Red de emprendedores, inversores y líderes alineados.</p>
-          <a href="#" onclick="return false">Ver más →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EVIDENCE -->
-<section id="evidence">
-  <div class="content-wrap">
-    <div class="evidence-inner">
-      <span class="eyebrow">Evidencia</span>
-      <div class="evidence-grid">
-        <div class="evidence-item">
-          <p class="evidence-stat">24</p>
-          <p class="evidence-label">Miembros fundadores</p>
-        </div>
-        <div class="evidence-item">
-          <p class="evidence-stat">$3.2M</p>
-          <p class="evidence-label">Capital movilizado</p>
-        </div>
-        <div class="evidence-item">
-          <p class="evidence-stat">8</p>
-          <p class="evidence-label">Proyectos en desarrollo</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOUNDER FRAME -->
-<section id="founder">
-  <div class="content-wrap">
-    <div class="founder-inner">
-      <div class="founder-image">
-        [Fotografía del fundador — 480×600px]
-      </div>
-      <div class="founder-text">
-        <blockquote>
-          <p>DSRZ HQ es el punto de convergencia entre posibilidad y momentum. Aquí, los líderes que construyen el futuro encuentran capital, comunidad y claridad de propósito.</p>
-        </blockquote>
-        <p class="founder-name">Diego Leonardo Suárez López</p>
-        <p class="founder-role">Fundador</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACCESS -->
-<section id="access">
-  <div class="content-wrap">
-    <div class="access-inner">
-      <span class="eyebrow">Solicitar acceso</span>
-      <form class="access-form" onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <label class="form-label">Nombre</label>
-          <input type="text" name="nombre" class="form-input" placeholder="Tu nombre completo" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Perfil</label>
-          <select name="perfil" class="form-select" required>
-            <option>Selecciona tu perfil</option>
-            <option>Emprendedor</option>
-            <option>Inversionista</option>
-            <option>Líder de equipo</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" name="email" class="form-input" placeholder="tu@email.com" required>
-        </div>
-        <button type="submit" class="form-submit">Enviar solicitud</button>
-      </form>
-      <div class="success-message" id="successMsg">
-        <p style="font-family: var(--font-ui); color: var(--fg-1); margin: 0; font-weight: 500;">¡Solicitud recibida! Te contactaremos pronto.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="content-wrap">
-    <div class="footer-inner">
-      <a href="#top" class="footer-logo">
-        <img src="./assets/logos/DSRZ_lockup_horizontal_inverted.svg" alt="DSRZ">
+  <!-- ═══ NAV ═══════════════════════════════════════════════════════════════ -->
+  <header class="nav" id="nav" role="banner">
+    <div class="wrap nav-inner">
+      <a href="#top" class="nav-logo" aria-label="DSRZ HQ — inicio">
+        <img src="assets/logos/DSRZ_lockup_horizontal_inverted.svg" alt="DSRZ" height="28">
       </a>
-      <div class="footer-links">
+      <nav class="nav-links" aria-label="Navegación principal">
         <a href="#ecosystem">Ecosistema</a>
         <a href="#vectors">Vectores</a>
         <a href="#evidence">Evidencia</a>
         <a href="#founder">Fundador</a>
-        <a href="#">Política de privacidad</a>
+        <button class="btn btn-primary js-modal-open">Entrar</button>
+      </nav>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="hamburger-close-icon" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══ MOBILE MENU ═════════════════════════════════════════════════════ -->
+  <div class="mobile-menu hidden" id="mobile-menu" role="dialog" aria-label="Menú de navegación">
+    <nav class="mobile-menu-nav">
+      <a href="#ecosystem" class="js-menu-close">Ecosistema</a>
+      <a href="#vectors" class="js-menu-close">Vectores</a>
+      <a href="#evidence" class="js-menu-close">Evidencia</a>
+      <a href="#founder" class="js-menu-close">Fundador</a>
+    </nav>
+    <div class="mobile-menu-cta">
+      <button class="btn btn-primary js-modal-open js-menu-close">
+        Entrar al ecosistema
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
+  <section id="top" class="hero" data-screen-label="Hero">
+    <div class="hero-lines" aria-hidden="true"></div>
+    <div class="wrap hero-content">
+      <div class="hero-max">
+        <span class="ew ew-dark">Organized Momentum</span>
+        <h1>Donde las ideas se convierten en <span class="accent">impacto</span>.</h1>
+        <p class="hero-lead">DSRZ HQ es el punto de entrada al ecosistema DSRZ.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary js-modal-open">
+            Entrar al ecosistema
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <button class="btn btn-ghost-dark">Conocer la visión</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SIGNAL ════════════════════════════════════════════════════════════ -->
+  <section class="signal" data-screen-label="Signal">
+    <div class="wrap signal-inner">
+      <span class="ew">Señal</span>
+      <blockquote>
+        <p>"La plataforma donde las ideas se convierten en impacto."</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ═══ ECOSYSTEM ════════════════════════════════════════════════════════ -->
+  <section id="ecosystem" class="ecosystem" data-screen-label="Ecosystem">
+    <div class="wrap eco-inner">
+      <span class="ew ew-dark">El ecosistema</span>
+      <h2>Una constelación organizada alrededor de DSRZ HQ.</h2>
+      <p class="eco-lead">El ecosistema se organiza alrededor de cinco satélites documentados. La activación pública queda condicionada al cierre de evidencia mínima y validación del set final.</p>
+
+      <div class="diagram-wrap">
+        <svg class="diagram-svg" viewBox="0 0 1280 520" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <line x1="640" y1="260" x2="640"  y2="84"  stroke="rgba(37,99,235,0.55)" stroke-width="1.5"/>
+          <line x1="640" y1="260" x2="1080" y2="198" stroke="rgba(37,99,235,0.55)" stroke-width="1.5"/>
+          <line x1="640" y1="260" x2="760" y2="438" stroke="rgba(37,99,235,0.55)" stroke-width="1.5"/>
+          <line x1="640" y1="260" x2="320" y2="438" stroke="rgba(37,99,235,0.55)" stroke-width="1.5"/>
+          <line x1="640" y1="260" x2="200" y2="198" stroke="rgba(37,99,235,0.55)" stroke-width="1.5"/>
+          <circle cx="640"  cy="84"  r="3.5" fill="#2563EB"/>
+          <circle cx="1080" cy="198" r="3.5" fill="#2563EB"/>
+          <circle cx="760"  cy="438" r="3.5" fill="#2563EB"/>
+          <circle cx="320"  cy="438" r="3.5" fill="#2563EB"/>
+          <circle cx="200"  cy="198" r="3.5" fill="#2563EB"/>
+          <circle cx="640"  cy="260" r="4"   fill="#fff"/>
+        </svg>
+        <div class="node-center">
+          <img src="assets/logos/DSRZ_isotype_white.svg" alt="" height="56">
+          <span class="node-center-lbl">DSRZ HQ</span>
+        </div>
+        <div class="node-sat" style="left:50%;top:16.1538%;cursor:pointer"><div class="node-sat-name">NODMIO</div><div class="node-sat-kind">Comunidad</div></div>
+        <div class="node-sat" style="left:84.375%;top:38.0769%"><div class="node-sat-name">DSRZ Ventures</div><div class="node-sat-kind">Capital</div></div>
+        <div class="node-sat" style="left:59.375%;top:84.2308%"><div class="node-sat-name">DSRZ Labs</div><div class="node-sat-kind">Producto</div></div>
+        <div class="node-sat" style="left:25%;top:84.2308%"><div class="node-sat-name">DSRZ Studio</div><div class="node-sat-kind">Creación</div></div>
+        <div class="node-sat" style="left:15.625%;top:38.0769%"><div class="node-sat-name">DSRZ Editorial</div><div class="node-sat-kind">Voz</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VECTORS ══════════════════════════════════════════════════════════ -->
+  <section id="vectors" class="vectors" data-screen-label="Vectors">
+    <div class="wrap vec-inner">
+      <span class="ew">Vectores de acción</span>
+      <h2>Tres fuerzas que mueven el campo.</h2>
+      <div class="vec-grid">
+
+        <article class="vec-card">
+          <div class="card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          </div>
+          <h3>Editorial</h3>
+          <p>Ideas que se publican y se defienden. La voz que convierte pensamiento en posición.</p>
+          <a href="#access" class="card-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </article>
+
+          <article class="vec-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 17h6l4-8 4 4 6-12"/></svg>
+            </div>
+            <h3>Capital</h3>
+            <p>La lectura que ordena opciones, prioriza apuestas y convierte claridad en movimiento.</p>
+            <a href="#access" class="card-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+
+          <article class="vec-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Comunidad</h3>
+            <p>La red que conecta a quienes construyen, financian y deciden. Convergencia real, no volumen.</p>
+            <a href="#access" class="card-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EVIDENCE ══════════════════════════════════════════════════════════ -->
+  <section id="evidence" class="evidence" data-screen-label="Evidence">
+    <div class="wrap ev-inner">
+      <span class="ew">Evidencia</span>
+      <h2>El impacto se ve. Y se mide.</h2>
+      <div class="ev-stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+        <div style="padding:32px 24px;border-top:1px solid var(--line-1);background:var(--white)">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:52px;line-height:1;color:var(--fg-1)">+$65M USD</div>
+          <div style="font-family:var(--font-ui);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--fg-3);margin-top:12px">Negociaciones gestionadas</div>
+          <div style="font-family:var(--font-ui);font-size:15px;line-height:1.6;color:var(--fg-2);margin-top:10px">Portafolio acumulado en proyectos de alto impacto.</div>
+        </div>
+        <div style="padding:32px 24px;border-top:1px solid var(--line-1);background:var(--white)">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:52px;line-height:1;color:var(--fg-1)">+1,100</div>
+          <div style="font-family:var(--font-ui);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--fg-3);margin-top:12px">Unidades privativas gestionadas</div>
+          <div style="font-family:var(--font-ui);font-size:15px;line-height:1.6;color:var(--fg-2);margin-top:10px">Desarrollo inmobiliario residencial en México.</div>
+        </div>
+        <div style="padding:32px 24px;border-top:1px solid var(--line-1);background:var(--white)">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:52px;line-height:1;color:var(--fg-1)">7</div>
+          <div style="font-family:var(--font-ui);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--fg-3);margin-top:12px">Empresas con +3 años</div>
+          <div style="font-family:var(--font-ui);font-size:15px;line-height:1.6;color:var(--fg-2);margin-top:10px">Organizaciones en México y Colombia con colaboración sostenida.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOUNDER ═══════════════════════════════════════════════════════════ -->
+  <section id="founder" class="founder" data-screen-label="Founder">
+    <div class="wrap founder-inner">
+      <div class="founder-grid">
+        <div class="founder-img">
+          <img src="assets/photos/founder-photo.jpg" alt="Diego Leonardo Suárez López" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:2px;">
+        </div>
+        <div class="founder-text">
+          <span class="ew ew-dark">Fundador</span>
+          <h2>Diego Leonardo Suárez López</h2>
+          <div class="founder-role">Brand Owner · DSRZ HQ</div>
+          <p>El impacto no es un accidente. Ocurre cuando una idea encuentra estructura, velocidad y dirección al mismo tiempo.</p>
+          <p>DSRZ HQ es la fuerza organizada que conecta posibilidades, acelera transformación y multiplica impacto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ACCESS ════════════════════════════════════════════════════════════ -->
+  <section id="access" class="access" data-screen-label="Access">
+    <div class="wrap acc-inner">
+      <div class="acc-grid">
+        <div class="acc-copy">
+          <span class="ew ew-dark">Solicitar acceso</span>
+          <h2>Entra al campo de momentum.</h2>
+          <p>El acceso es por invitación. Cuéntanos quién eres.</p>
+          <div class="acc-criteria">
+            <div class="acc-criteria-lbl">Para quien aplica</div>
+            <ul>
+              <li><span>Emprendedores con tracción</span></li>
+              <li><span>Inversionistas activos</span></li>
+              <li><span>Líderes de equipo</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-panel">
+          <div id="acc-form-view">
+            <form id="acc-form" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="899e61b9-ae19-435b-bbd0-f02495cce5fe">
+              <input type="hidden" name="redirect" value="https://dsrzhq.com/gracias.html">
+              <input type="hidden" name="subject" value="Solicitud de acceso - DSRZ HQ">
+              <input type="hidden" name="from_name" value="DSRZ HQ">
+              <input type="hidden" name="origen" value="inline">
+              <input type="hidden" name="aviso_version" value="2026-08-03">
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" aria-hidden="true">
+              <div class="field">
+                <label for="acc-nombre">Nombre</label>
+                <input id="acc-nombre" name="nombre" type="text" placeholder="Tu nombre completo" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="acc-email">Email</label>
+                <input id="acc-email" name="email" type="email" placeholder="nombre@empresa.com" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="acc-perfil">Perfil</label>
+                <select id="acc-perfil" name="perfil" required>
+              <option>Emprendedor</option>
+              <option>Inversionista</option>
+              <option>Líder</option>
+                </select>
+              </div>
+              <p class="form-legal">Al enviar, tus datos se tratarán para evaluar tu solicitud de acceso. Consulta el <a href="/privacy-notice">aviso de privacidad</a>.</p>
+              <div>
+                <button type="submit" class="btn btn-primary">
+                  Enviar solicitud
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+  <footer class="footer" data-screen-label="Footer">
+    <div class="wrap footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logos/DSRZ_lockup_horizontal_inverted.svg" alt="DSRZ" height="30">
+          <p>Donde las ideas se convierten en impacto.</p>
+        </div>
+        <div class="footer-col">
+            <div class="footer-col-title">Ecosistema</div>
+            <ul>
+              <li><a href="#ecosystem">DSRZ HQ</a></li>
+              <li><a href="#ecosystem">NODMIO</a></li>
+              <li><a href="#ecosystem">DSRZ Ventures</a></li>
+              <li><a href="#ecosystem">DSRZ Labs</a></li>
+              <li><a href="#ecosystem">DSRZ Studio</a></li>
+              <li><a href="#ecosystem">DSRZ Editorial</a></li>
+            </ul>
+          </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Compañía</div>
+          <ul>
+            <li><a href="#founder">Fundador</a></li>
+            <li><a href="#evidence">Evidencia</a></li>
+            <li><a href="mailto:dsrzhq+contacto@gmail.com">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Recursos</div>
+          <ul>
+            <li><a href="/terms">Términos</a></li>
+            <li><a href="/privacy">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 DSRZ HQ · dsrzhq.com · @dsrzhq</span>
+        <span>Organized Momentum</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ MODAL ════════════════════════════════════════════════════════════ -->
+  <div id="modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-panel">
+      <button class="modal-close js-modal-close" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <div id="modal-form-view" class="modal-body">
+        <span class="ew">Solicitar acceso</span>
+        <h3 id="modal-title">Entra al campo de momentum.</h3>
+        <p>El acceso es por invitación. Cuéntanos quién eres.</p>
+        <form class="modal-form" id="modal-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="899e61b9-ae19-435b-bbd0-f02495cce5fe">
+          <input type="hidden" name="redirect" value="https://dsrzhq.com/gracias.html">
+          <input type="hidden" name="subject" value="Solicitud de acceso - DSRZ HQ">
+          <input type="hidden" name="from_name" value="DSRZ HQ">
+          <input type="hidden" name="origen" value="modal">
+          <input type="hidden" name="aviso_version" value="2026-08-03">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" aria-hidden="true">
+          <div class="field"><label for="m-nombre">Nombre</label><input id="m-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" required></div>
+          <div class="field"><label for="m-email">Email</label><input id="m-email" name="email" type="email" placeholder="nombre@empresa.com" autocomplete="email" required></div>
+          <div class="field">
+            <label for="m-perfil">Perfil</label>
+            <select id="m-perfil" name="perfil" required>
+              <option>Emprendedor</option><option>Inversionista</option>
+              <option>Líder</option>
+            </select>
+          </div>
+          <p class="form-legal">Al enviar, tus datos se tratarán para evaluar tu solicitud de acceso. Consulta el <a href="/privacy-notice">aviso de privacidad</a>.</p>
+          <div>
+            <button type="submit" class="btn btn-primary">
+              Enviar solicitud
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</footer>
 
-<script>
-  // Sticky nav background on scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 24) {
-      nav.classList.add('solid');
-    } else {
-      nav.classList.remove('solid');
+  <script src="js/image-slot.js"></script>
+  <script>
+    /* ── NAV scroll ── */
+    const nav = document.getElementById('nav');
+    function syncNav() { nav.classList.toggle('solid', window.scrollY > 24); }
+    window.addEventListener('scroll', syncNav, { passive: true });
+    syncNav();
+
+    /* ── MODAL ── */
+    const modal    = document.getElementById('modal');
+    const mForm    = document.getElementById('modal-form');
+    var modalReturnFocus = null;
+    var modalBackgroundState = [];
+    var modalFocusSelector = 'a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+
+    function getModalFocusables() {
+      return Array.prototype.filter.call(modal.querySelectorAll(modalFocusSelector), function(el) {
+        var style = window.getComputedStyle(el);
+        return style.display !== 'none' && style.visibility !== 'hidden';
+      });
     }
-  });
 
-  // Open access form
-  function openAccess() {
-    const accessSection = document.getElementById('access');
-    accessSection.scrollIntoView({ behavior: 'smooth' });
-    document.querySelector('[name="nombre"]').focus();
-  }
+    function setModalBackgroundInert(inert) {
+      if (inert) {
+        modalBackgroundState = Array.prototype.map.call(document.body.children, function(el) {
+          return {
+            el: el,
+            ariaHidden: el.getAttribute('aria-hidden'),
+            hadInert: el.hasAttribute('inert')
+          };
+        }).filter(function(state) { return state.el !== modal; });
+        modalBackgroundState.forEach(function(state) {
+          state.el.setAttribute('inert', '');
+          state.el.setAttribute('aria-hidden', 'true');
+        });
+      } else {
+        modalBackgroundState.forEach(function(state) {
+          if (state.hadInert) state.el.setAttribute('inert', '');
+          else state.el.removeAttribute('inert');
+          if (state.ariaHidden === null) state.el.removeAttribute('aria-hidden');
+          else state.el.setAttribute('aria-hidden', state.ariaHidden);
+        });
+        modalBackgroundState = [];
+      }
+    }
 
-  // Form submit
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const successMsg = document.getElementById('successMsg');
+    function openModal(event) {
+      modalReturnFocus = event && event.currentTarget ? event.currentTarget : document.activeElement;
+      mForm.reset();
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      setModalBackgroundInert(true);
+      setTimeout(function() {
+        var first = modal.querySelector('#m-nombre, #m-email, #m-perfil');
+        if (first) first.focus();
+      }, 60);
+    }
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      setModalBackgroundInert(false);
+      if (modalReturnFocus && document.contains(modalReturnFocus)) modalReturnFocus.focus();
+      modalReturnFocus = null;
+    }
 
-    // Hide form, show success
-    form.style.display = 'none';
-    successMsg.classList.add('show');
+    document.querySelectorAll('.js-modal-open').forEach(function(b) { b.addEventListener('click', openModal); });
+    document.querySelectorAll('.js-modal-close').forEach(function(b) { b.addEventListener('click', closeModal); });
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e) {
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      var focusables = getModalFocusables();
+      if (!focusables.length) {
+        e.preventDefault();
+        return;
+      }
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (!modal.contains(document.activeElement) || (!e.shiftKey && document.activeElement === last)) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    });
 
-    // Reset after 4 seconds
-    setTimeout(() => {
-      form.style.display = 'flex';
-      successMsg.classList.remove('show');
-      form.reset();
-    }, 4000);
-  }
-</script>
+    /* ── INLINE ACCESS FORM ── */
 
+    /* ── MOBILE MENU ── */
+    var hamburger      = document.getElementById('nav-hamburger');
+    var mobileMenu     = document.getElementById('mobile-menu');
+    var hamburgerIcon  = document.getElementById('hamburger-icon');
+    var hamburgerClose = document.getElementById('hamburger-close-icon');
+    var menuOpen       = false;
+
+    function setMenu(open) {
+      menuOpen = open;
+      hamburger.setAttribute('aria-expanded', open);
+      mobileMenu.classList.toggle('hidden', !open);
+      hamburgerIcon.classList.toggle('hidden', open);
+      hamburgerClose.classList.toggle('hidden', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', function() { setMenu(!menuOpen); });
+
+    document.querySelectorAll('.js-menu-close').forEach(function(el) {
+      el.addEventListener('click', function() { setMenu(false); });
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) { setMenu(false); }
+    });
+
+  </script>
 </body>
 </html>
-<!-- Deployed Wed Aug 12 13:33:32 -05 2026 -->
-
