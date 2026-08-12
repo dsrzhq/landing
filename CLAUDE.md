@@ -69,12 +69,18 @@ Live: https://dsrzhq.com
 
 ## Workflow de desarrollo
 
-1. Lee este archivo + PROGRESS.md para entender estado actual
-2. Haz cambios localmente en `index.html`, archivos estáticos o assets
-3. Commit en main con mensaje claro (verbo + descripción)
-4. Push a origin/main
-5. Vercel deploya automáticamente en 10-30 segundos
-6. Verifica en dsrzhq.com (o dominios específicos)
+Flujo: Codex Sites (preview) → git push → GitHub → Vercel (auto-deploy)
+
+1. Lee CLAUDE.md + PROGRESS.md para entender estado actual
+2. Edita en Codex Sites (preview visual) o localmente en archivos
+3. Haz cambios en `index.html`, archivos estáticos, assets o CSS
+4. Commit en main: `git commit -m "verbo + descripción clara"`
+5. Push a origin/main: `git push origin main`
+6. Vercel detecta push automáticamente
+7. Auto-deploy en 10-30 segundos a dsrzhq.com
+8. Verifica en dsrzhq.com live
+
+Nota: Codex Sites es editor visual únicamente. GitHub es fuente única. No hacer cambios directos en Vercel.
 
 ## Regla de clarificación
 
