@@ -1,4 +1,10 @@
 {
   "buildCommand": "",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "routes": [
+    { "src": "/terms", "dest": "/terms.html" },
+    { "src": "/privacy", "dest": "/privacy.html" },
+    { "src": "/gracias", "dest": "/gracias.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
 }
