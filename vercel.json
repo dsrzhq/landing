@@ -5,6 +5,12 @@
     { "src": "/terms", "dest": "/terms.html" },
     { "src": "/privacy", "dest": "/privacy.html" },
     { "src": "/gracias", "dest": "/gracias.html" },
+    { "src": "/jd-sites109/login", "dest": "/jd-sites109-login.html" },
+    { "src": "/jd-sites109/inicio", "dest": "/jd-sites109-inicio.html" },
+    { "src": "/jd-sites109$", "dest": "/jd-sites109-login.html" },
+    { "src": "/olympus/login", "dest": "/olympus-login.html" },
+    { "src": "/olympus/inicio", "dest": "/olympus-inicio.html" },
+    { "src": "/olympus$", "dest": "/olympus-login.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
