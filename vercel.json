@@ -1,6 +1,9 @@
 {
   "buildCommand": "",
   "outputDirectory": ".",
+  "redirects": [
+    { "source": "/:path(.*)", "destination": "https://dsrzhq.com/:path", "permanent": true }
+  ],
   "routes": [
     { "src": "/terms", "dest": "/terms.html" },
     { "src": "/privacy", "dest": "/privacy.html" },
